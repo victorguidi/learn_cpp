@@ -7,3 +7,9 @@ You will find many exercises and also some common comments in each file, so it c
 ## Project 1. 
 ### Exercise Guess a number:
 
+If you want to compile a file in C++ you can use:
+```
+  g++ <file name> -o <output name.out>>
+
+```
+
