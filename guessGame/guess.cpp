@@ -13,6 +13,9 @@ int main() {
   bool notGuessed = true;
   int guesses = 0;
 
+  // adding a points system
+  double score = 1000;
+
   // adding a loop so the game won't finsih until the player guesses correclty
   while (notGuessed) {
     guesses++;
@@ -24,6 +27,11 @@ int main() {
 
     // In order to read or receive an output, we can use cin:
     cin >> guess;
+
+    // We can calculate the points already here becaue it is not related to the
+    // fact if was correct or not
+    double lost_points = abs(guess - NUMBER) / 2.0;
+    score = score - lost_points;
 
     // Declare two boolean variables so it works as a condition for our
     // validation
@@ -40,6 +48,11 @@ int main() {
       cout << "Your guess is lower then the number" << endl;
     }
   }
+
+  // adding 2 points of precision for our final score:
+  cout.precision(2);
+  cout << fixed;
   cout << "Congrats, you finished the game in: " << guesses << " guesses!!"
        << endl;
+  cout << "Your score was: " << score << endl;
 }
