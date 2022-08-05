@@ -1,0 +1,6 @@
+5
+car
+house
+astronaut
+debt
+monitor

@@ -1,3 +1,6 @@
+#include <cstdlib>
+#include <ctime>
+#include <fstream>
 #include <iostream>
 #include <map>
 #include <string>
@@ -34,8 +37,34 @@ bool not_guessed(string word, map<char, bool> hide) {
 
 bool not_hanged(vector<char> wrong_guesses) { return wrong_guesses.size() < 5; }
 
+vector<string> read_file() {
+  ifstream file;
+  file.open("words.txt");
+
+  int n_words;
+  file >> n_words;
+
+  vector<string> words;
+  for (int i = 0; i < n_words; i++) {
+    string word;
+    file >> word;
+    words.push_back(word);
+  }
+
+  return words;
+}
+
+string randomize_words() {
+  vector<string> words = read_file();
+
+  srand(time(NULL));
+  int random = rand() % words.size();
+
+  return words[random];
+}
+
 int main() {
-  string word = "guess";
+  string word = randomize_words();
 
   // Using maps is c++ is just like using a dict
   map<char, bool> hide;
